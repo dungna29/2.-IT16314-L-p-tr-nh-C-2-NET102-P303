@@ -23,7 +23,7 @@ namespace BAI_3._1_LINQ_CacCauLenh
             //Gọi các ví dụ về lý thuyết lên để chạy
             Console.OutputEncoding = Encoding.GetEncoding("UTF-8");
             Program program = new Program();
-            ViduOfType();
+            ViDuGroupBy();
         }
 
         #region 1. Toán tử Where để lọc theo điều kiện trả về 1 danh sách hoặc 1 giá trị sau khi thỏa mãn điều kiện
@@ -77,6 +77,90 @@ namespace BAI_3._1_LINQ_CacCauLenh
             {
                 Console.WriteLine(x);
             }
+        }
+
+
+        #endregion
+
+        #region 3. OrderBy sử dụng để sắp xếp danh sách theo một điều kiện cụ thể
+
+        public static void ViDuOrderBy()
+        {
+            //Lấy ra 1 danh sách nhân viên được sắp xếp theo tên tăng dần
+            var temp =
+                from a in _lstNhanViens
+                orderby a.TenNV  // ascending || descending
+                select a;
+            //Cách dùng lambda
+            var temp2 = _lstNhanViens.OrderBy(c => c.TenNV);
+        }
+        //ThenBy và ThenByDescending đi với Orderby và nó là mở rộng để sắp xếp thêm nhiều trường hơn
+        public static void ViDuThenBy()
+        {
+            //Lấy ra 1 danh sách nhân viên được sắp xếp theo tên tăng dần
+            var temp2 = _lstNhanViens.OrderBy(c => c.TenNV).ThenBy(c => c.ThanhPho);
+            var temp3 = _lstNhanViens.OrderBy(c => c.TenNV).ThenByDescending(c => c.ThanhPho);
+        }
+        #endregion
+
+        #region 4. GroupBy nhóm các thành phần giống nhau
+
+        public static void ViDuGroupBy()
+        {
+            //1.
+            List<string> lstName = new List<string> { "Trang", "Trang", "Kiều", "Kiều", "A", "B", "C" };
+            var temp1 = from a in lstName
+                        group a by a
+                into g
+                        select g.Key;
+            // foreach (var x in temp1)
+            // {
+            //     Console.Write(x + " ");
+            // }
+
+            Console.WriteLine();
+            //2.Lấy ra danh sách thể loại trong bảng sản phẩm
+            var temp2 = from a in _lstSanPhams
+                        group a by a.IdTheLoai
+                into g
+                        select g.Key;
+            // foreach (var x in temp2)
+            // {
+            //     Console.Write(x + " ");
+            // }
+
+            //3.
+            var temp3 =
+                from a in _lstSanPhams
+                group a by new //Nhóm khi thỏa mãn 2 điều kiện dưới đây
+                {
+                    a.IdTheLoai,
+                    a.TrangThai
+                }
+                into g
+                select new
+                {
+                    IdTheLoai = g.Key.IdTheLoai,
+                    TrangThai = g.Key.TrangThai,
+                    SoLuongTrangThai = g.Count(c=>c.TrangThai == c.TrangThai),
+                    SoLuongTheLoai = g.Count(c=>c.IdTheLoai==c.IdTheLoai)
+                };
+            var temp4 = _lstSanPhams.GroupBy(a => new {a.IdTheLoai, a.TrangThai}).Select(g => new
+            {
+                IdTheLoai = g.Key.IdTheLoai,
+                TrangThai = g.Key.TrangThai,
+                SoLuongTrangThai = g.Count(c => c.TrangThai == c.TrangThai),
+                SoLuongTheLoai = g.Count(c => c.IdTheLoai == c.IdTheLoai)
+            });//Sử dụng LAMBDA
+            
+            foreach (var x in temp3)
+            {
+                Console.WriteLine(x.IdTheLoai + " " + x.TrangThai + " SL Trạng Thái: " + x.SoLuongTrangThai + " SoLuongTheLoai = " + x.SoLuongTheLoai);
+            }
+            //Khi sử dụng Groupby khi cần nhóm các cột dữ liệu giống nhau tạo thành các bản ghi mới và thường đi với các hàm tổng hợp
+
+            //Buổi sau code lại câu đếm số lượng nhân viên sống tại HN sử dụng Groupby
+            //Tính tổng giá bán của các sản phẩm có cùng thể loại
         }
 
 

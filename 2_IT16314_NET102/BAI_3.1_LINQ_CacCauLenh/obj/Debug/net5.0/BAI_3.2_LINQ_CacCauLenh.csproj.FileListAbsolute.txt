@@ -13,3 +13,4 @@ F:\Dungna29 Fpoly\8. Demo\Demo C#2\SM21_Block1\2.-IT16314-L-p-tr-nh-C-2-NET102-P
 F:\Dungna29 Fpoly\8. Demo\Demo C#2\SM21_Block1\2.-IT16314-L-p-tr-nh-C-2-NET102-P303\2_IT16314_NET102\BAI_3.1_LINQ_CacCauLenh\obj\Debug\net5.0\ref\BAI_3.2_LINQ_CacCauLenh.dll
 F:\Dungna29 Fpoly\8. Demo\Demo C#2\SM21_Block1\2.-IT16314-L-p-tr-nh-C-2-NET102-P303\2_IT16314_NET102\BAI_3.1_LINQ_CacCauLenh\obj\Debug\net5.0\BAI_3.2_LINQ_CacCauLenh.pdb
 F:\Dungna29 Fpoly\8. Demo\Demo C#2\SM21_Block1\2.-IT16314-L-p-tr-nh-C-2-NET102-P303\2_IT16314_NET102\BAI_3.1_LINQ_CacCauLenh\obj\Debug\net5.0\BAI_3.2_LINQ_CacCauLenh.genruntimeconfig.cache
+F:\Dungna29 Fpoly\8. Demo\Demo C#2\SM21_Block1\2.-IT16314-L-p-tr-nh-C-2-NET102-P303\2_IT16314_NET102\BAI_3.1_LINQ_CacCauLenh\obj\Debug\net5.0\BAI_3.2_LINQ_CacCauLenh.csproj.AssemblyReference.cache
